@@ -182,16 +182,22 @@ class RecoveryControllerUtilDb(object):
             # NOTE: Hosts hostname suffix is
             # undetermined("_data_line","_control_line")
             iscsi_ip = None
-            controle_ip = socket.gethostbyname(jsonData.get("hostname"))
+
+            # PF9 change
+            #controle_ip = socket.gethostbyname(jsonData.get("hostname"))
             recover_to = None
+            # PF9 change
+            """
             if recover_by == 0:
+
                 recover_to = self._get_reserve_node_from_reserve_list_db(
                     jsonData.get("cluster_port"),
                     jsonData.get("hostname"),
                     session)
-                # If reserve node is None, set progress 3.
+                 If reserve node is None, set progress 3.
                 if recover_to is None:
                     progress = 3
+            """
 
             def strp_time(u_time):
                 """
@@ -248,8 +254,8 @@ class RecoveryControllerUtilDb(object):
                 progress=progress,
                 recover_by=recover_by,
                 iscsi_ip=iscsi_ip,
-                controle_ip=controle_ip,
-                recover_to=recover_to
+                controle_ip=None, # PF9 change
+                recover_to=recover_to # PF9 this should be None
             )
 
             self.rc_util.syslogout_ex("RecoveryControllerUtilDb_0006",
@@ -288,7 +294,7 @@ class RecoveryControllerUtilDb(object):
                 "progress": progress,
                 "recover_by": recover_by,
                 "iscsi_ip": iscsi_ip,
-                "controle_ip": controle_ip,
+                "controle_ip": None, # PF9 change
                 "recover_to": recover_to
             }
 
@@ -541,7 +547,7 @@ class RecoveryControllerUtilApi(object):
         """ Return Keystone API session object."""
         loader = loading.get_plugin_loader('password')
         auth = loader.load_from_options(**auth_args)
-        sess = session.Session(auth=auth)
+        sess = session.Session(auth=auth, verify=False)
 
         return sess
 
@@ -699,7 +705,7 @@ class RecoveryControllerUtilApi(object):
         try:
             self.rc_util.syslogout('Call Evacuate API with %s to %s' %
                                    (uuid, targethost), syslog.LOG_INFO)
-            self.nova_client.servers.evacuate(uuid, host=targethost,
+            self.nova_client.servers.evacuate(uuid, # host=targethost, PF9
                                               on_shared_storage=True)
         except exceptions.ClientException as e:
             error_code = "[RecoveryControllerUtilApi_0007]"

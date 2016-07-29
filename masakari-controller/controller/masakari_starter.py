@@ -295,11 +295,15 @@ class RecoveryControllerStarter(object):
 
                 return
             else:
+                # PF9 change
+                recover_to = None
+                """
                 result = dbapi.get_all_notification_list_by_id_for_update(
                     session, notification_id)
                 recover_to = result.pop().recover_to
-
                 if retry_mode is False:
+                    # PF9 change
+
                     cnt = dbapi.get_all_reserve_list_by_hostname_not_deleted(
                         session,
                         recover_to)
@@ -333,15 +337,17 @@ class RecoveryControllerStarter(object):
                             update_at,
                             recover_to
                         )
-
                         self.rc_util.syslogout_ex(
                             "RecoveryControllerStarter_0024", syslog.LOG_INFO)
+                """
                 self.rc_util.syslogout_ex("RecoveryControllerStarter_0015",
                                           syslog.LOG_INFO)
 
+                """
                 delete_at = datetime.datetime.now()
                 dbapi.update_reserve_list_by_hostname_as_deleted(
                     session, recover_to, delete_at)
+                """
             # create semaphore (Multiplicity is get from config.)
             conf_dict = self.rc_config.get_value('recover_starter')
             sem_recovery_instance = threading.Semaphore(
