@@ -47,4 +47,4 @@ QA_SKIP_BUILD_ROOT=1 rpmbuild -ba \
          --define "_githash $GITHASH" \
          $SPEC
 
-${PROJ_ROOT}/sign_packages.sh ${RPMBUILD}/RPMS/*/$PROJ*.rpm
+${PROJ_ROOT}/sign_packages.sh ${RPMBUILD}/RPMS/*/*$PROJ*.rpm
