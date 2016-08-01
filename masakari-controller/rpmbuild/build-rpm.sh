@@ -1,5 +1,6 @@
-#!/bin/bash -x -e
+#!/bin/bash -x
 
+set -e
 PROJ=masakari
 CUR_DIR=$(cd "$(dirname "$1")"; pwd)/$(basename "$1")
 SRCROOT=$CUR_DIR/../../
