@@ -1,4 +1,4 @@
-#!/bin/bash -x
+#!/bin/bash -x -e
 
 PROJ=masakari
 CUR_DIR=$(cd "$(dirname "$1")"; pwd)/$(basename "$1")
