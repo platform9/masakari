@@ -17,14 +17,20 @@
 # limitations under the License.
 
 # Source function library.
-. /lib/lsb/init-functions
+# PF9 change
+#. /lib/lsb/init-functions
+. /etc/init.d/functions
 
 PROGNAME=masakari
 PROG_DIR=/opt/masakari
 PROG=$PROG_DIR/controller/masakari_controller.py
 PIDFILE=/var/run/masakari-controller.pid
-PYTHON=/usr/bin/python
-USER=openstack
+
+# PF9 change
+PYTHON=$PROG_DIR/bin/python
+
+# PF9 change
+USER=$PROGNAME
 
 start() {
         [ -x $PROG ] || exit 1

@@ -38,6 +38,7 @@ tar xf %{_sourcedir}/%{project}.tar
 
 # virtualenv and setup
 virtualenv %{buildroot}/opt/pf9/%{project}
+%{buildroot}/opt/pf9/%{project}/bin/python setup.py install
 %{buildroot}/opt/pf9/%{project}/bin/python %{buildroot}/opt/pf9/%{project}/bin/pip install .
 
 # tests
@@ -47,13 +48,9 @@ rm -rf %{buildroot}/opt/pf9/%{project}/lib/python?.?/site-packages/%{project}/te
 # https://github.com/pexpect/pexpect/issues/220
 rm -f %{buildroot}/opt/pf9/%{project}/lib/python?.?/site-packages/pexpect/async.py
 
-# init scripts
-for daemon in %{daemons}
-do
-    initscript=%{buildroot}/%{_initrddir}/%{project}-$daemon
-    install -p -D -m 755 init.d/%{project}-$daemon $initscript
-    #sed -i "s/suffix=.*/suffix=$daemon/" $initscript
-done
+# systemd
+install -d -m 755 %{buildroot}/etc/systemd/system/
+install -p -m 664 etc/systemd/system/pf9-masakari-controller.service %{buildroot}/etc/systemd/system/
 
 # config files
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{project}
@@ -96,7 +93,8 @@ install -d -m 755 %{buildroot}%{_localstatedir}/run/%{project}
 /opt/pf9/%{project}
 
 # services
-%{_initrddir}/%{project}-*
+#%dir /etc/systemd/system/
+/etc/systemd/system/pf9-masakari-controller.service
 
 # /usr/bin
 %{_bindir}/%{project}-*
@@ -127,7 +125,7 @@ install -d -m 755 %{buildroot}%{_localstatedir}/run/%{project}
 %post
 for daemon in %{daemons}
 do
-    chkconfig --add %{project}-$daemon
+    chkconfig --add pf9-masakari-controller
 done
 
 %preun
@@ -135,7 +133,7 @@ if [ $1 = 0 ] ; then
     for daemon in %{daemons}
     do
         /sbin/service %{project}-$daemon stop >/dev/null 2>&1
-        /sbin/chkconfig --del %{project}-$daemon
+        /sbin/chkconfig --del pf9-masakari-controller
     done
 fi
 
@@ -144,7 +142,7 @@ if [ $1 -ge 1 ] ; then
     # Package upgrade, not uninstall
     for daemon in %{daemons}
     do
-        /sbin/service %{project}-$daemon condrestart > /dev/null 2>&1 || :
+        /sbin/service pf9-masakari-controller condrestart > /dev/null 2>&1 || :
     done
 else
     /usr/sbin/userdel %{project}

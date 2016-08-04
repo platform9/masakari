@@ -14,7 +14,7 @@ PBR_VERSION=1.8.1
 export PBR_VERSION
 GITHASH=`git rev-parse --short HEAD`
 
-. /opt/rh/python27/enable
+#. /opt/rh/python27/enable
 
 # build rpm environment
 [ -d $RPMBUILD ] && rm -fr $SRCROOT/rpmbuild

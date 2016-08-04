@@ -1,0 +1,11 @@
+[Unit]
+Description=Masakari Controller
+
+[Service]
+Type=simple
+User=masakari
+Group=masakari
+ExecStart=/opt/pf9/masakari/bin/masakari-controller
+
+[Install]
+WantedBy=multi-user.target
