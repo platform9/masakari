@@ -433,6 +433,26 @@ class RecoveryControllerWorker(object):
                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
             return
 
+    def mark_host_down_pf9(self, hostname):
+        """
+        Mark host service state as 'down' in nova.
+        :param hostname:
+        :return:
+        """
+        try:
+            self.rc_util_api.force_host_down_pf9(hostname)
+        except:
+            self.rc_util.syslogout_ex("RecoveryControllerWorker_0032",
+                                      syslog.LOG_ERR)
+            error_type, error_value, traceback_ = sys.exc_info()
+            tb_list = traceback.format_tb(traceback_)
+            self.rc_util.syslogout(error_type, syslog.LOG_ERR)
+            self.rc_util.syslogout(error_value, syslog.LOG_ERR)
+            for tb in tb_list:
+                self.rc_util.syslogout(tb, syslog.LOG_ERR)
+            return
+
+
     def recovery_instance(self, uuid, primary_id, sem):
         """
            Execute VM recovery.

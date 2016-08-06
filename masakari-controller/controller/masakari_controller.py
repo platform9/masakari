@@ -154,6 +154,8 @@ class RecoveryController(object):
                                   False,))
                         th.start()
 
+                        # PF9 begin
+                        """
                         # Sleep until updating nova-compute service status
                         # down.
                         self.rc_util.syslogout_ex(
@@ -165,6 +167,10 @@ class RecoveryController(object):
                                "service status." % (node_err_wait))
                         self.rc_util.syslogout(msg, syslog.LOG_INFO)
                         greenthread.sleep(int(node_err_wait))
+                        """
+                        # Mark nova compute service as 'down' to immediately start evacuation
+                        self.rc_worker.mark_host_down_pf9(row.notification_hostname)
+                        # PF9 end
 
                         # Start add_failed_host thread
                         # TODO(sampath):
@@ -379,6 +385,8 @@ class RecoveryController(object):
                         th.start()
 
                         # Sleep until nova recognizes the node down.
+                        # PF9 begin
+                        """
                         self.rc_util.syslogout_ex(
                             "RecoveryController_0029", syslog.LOG_INFO)
                         dic = self.rc_config.get_value('recover_starter')
@@ -389,7 +397,11 @@ class RecoveryController(object):
                                )
                         self.rc_util.syslogout(msg, syslog.LOG_INFO)
                         greenthread.sleep(int(node_err_wait))
-
+                        """
+                        # PF9 shoot the service
+                        self.rc_worker.mark_host_down_pf9( notification_list_dic.get(
+                            "notification_hostname"))
+                        # PF9 end
                         retry_mode = False
                         th = threading.Thread(
                             target=self.rc_starter.add_failed_host,

@@ -25,6 +25,7 @@ import logging
 import os
 import paramiko
 import re
+import requests
 import masakari_config as config
 import socket
 import subprocess
@@ -34,6 +35,7 @@ import threading
 import traceback
 from eventlet import greenthread
 import errno
+import json
 
 from keystoneauth1 import loading
 from keystoneauth1 import session
@@ -693,6 +695,31 @@ class RecoveryControllerUtilApi(object):
         except exceptions.ClientException as e:
             error_code = "[RecoveryControllerUtilApi_0006]"
             msg = 'Fails to disable nova-compute on %s: %s' % (hostname, e)
+            self.rc_util.syslogout(error_code + msg, syslog.LOG_ERR)
+            raise
+
+    def force_host_down_pf9(self, hostname):
+        """
+        Force host service status as "down"
+        :param hostname:
+        :return:
+        """
+        try:
+            self.rc_util.syslogout('Force nova-compute down on %s' % hostname,
+                                   syslog.LOG_INFO)
+            token = self.auth_session.get_token()
+            project_id = self.auth_session.get_project_id()
+            headers = {'X-OpenStack-Nova-API-Version': 2.11,
+                       'Content-Type': 'application/json',
+                       'X-Auth-Token': token}
+            url = 'http://localhost:8774/v2.1/' + project_id + '/os-services/force-down'
+            resp = requests.put(url, headers=headers, data=json.dumps({"binary": "nova-compute",
+                                                     "host": hostname,
+                                                     "forced_down": "True"}))
+            resp.raise_for_status()
+        except exceptions.ClientException as e:
+            error_code = "[RecoveryControllerUtilApi_0099]"
+            msg = 'Failed to force nova-compute down on %s: %s' % (hostname ,e)
             self.rc_util.syslogout(error_code + msg, syslog.LOG_ERR)
             raise
 
