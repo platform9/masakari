@@ -12,3 +12,6 @@ python-novaclient>=3.3.0
 python-keystoneclient>=2.3.1
 SQLAlchemy>=1.0.12
 SQLAlchemy-Utils>=0.32.0
+PasteDeploy
+paste
+keystonemiddleware
