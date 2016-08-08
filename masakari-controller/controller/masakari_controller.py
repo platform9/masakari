@@ -213,11 +213,15 @@ class RecoveryController(object):
                 target=self.rc_starter.handle_pending_instances)
             th.start()
 
+            # PF9 move this to __call__ for wsgi-fy app
             # Start reciever process for notification
+            """
             conf_wsgi_dic = self.rc_config.get_value('wsgi')
             wsgi.server(
                 eventlet.listen(('', int(conf_wsgi_dic['server_port']))),
                 self._notification_reciever)
+            """
+            # PF9 end
         except exc.SQLAlchemyError:
             error_type, error_value, traceback_ = sys.exc_info()
             tb_list = traceback.format_tb(traceback_)
@@ -314,6 +318,16 @@ class RecoveryController(object):
                 row_cnt += 1
 
         return return_value
+
+    def call(self, environ, start_response):
+        """
+        PF9 wsgi entrypoint to app. This function converts Masakari controller to app
+        format prescribed by paste framework.
+        :param environ:
+        :param start_response:
+        :return:
+        """
+        return self._notification_reciever(environ, start_response)
 
     def _check_json_param(self, json_data):
         try:

@@ -55,7 +55,7 @@ install -p -m 664 etc/systemd/system/pf9-masakari-controller.service %{buildroot
 # config files
 install -d -m 755 %{buildroot}%{_sysconfdir}/%{project}
 install -p -m 640 -t %{buildroot}%{_sysconfdir}/%{project}/ \
-                     etc/*.conf
+                     etc/*.conf etc/*.ini
 
 
 # patch the #!python with the venv's python
@@ -102,6 +102,7 @@ install -d -m 755 %{buildroot}%{_localstatedir}/run/%{project}
 # /etc/project config files
 %dir %{_sysconfdir}/%{project}
 %config(noreplace) %attr(-, root, %{project}) %{_sysconfdir}/%{project}/*.conf
+%config(noreplace) %attr(-, root, %{project}) %{_sysconfdir}/%{project}/*.ini
 
 # /var/lib 
 %dir %attr(0755, %{project}, nobody) %{_sharedstatedir}/%{project}
