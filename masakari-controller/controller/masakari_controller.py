@@ -541,7 +541,12 @@ class RecoveryController(object):
                     msg = "Duplicate notifications. id:" + jsonData.get("id")
                     self.rc_util.syslogout(msg, syslog.LOG_INFO)
                     self.rc_util.syslogout(jsonData, syslog.LOG_INFO)
-
+            # Node is up
+            elif jsonData.get("type") == "rscGroup" and \
+                str(jsonData.get("eventID")) == "1" and \
+                str(jsonData.get("eventType")) == "1" and \
+                str(jsonData.get("detail")) == "1":
+                self.rc_worker.mark_host_up_pf9(jsonData.get('hostname'))
             # VM Recovery(processing G)
             elif jsonData.get("type") == 'VM' and \
                     str(jsonData.get("eventID")) == '0' and \
