@@ -723,6 +723,39 @@ class RecoveryControllerUtilApi(object):
             self.rc_util.syslogout(error_code + msg, syslog.LOG_ERR)
             raise
 
+    def check_host_service_pf9(self, hostname):
+        """
+        Check host state
+        :param hostname:
+        :return: True if host is enabled false otherwise
+        """
+        try:
+            self.rc_util.syslogout('Check nova-compute on %s' % hostname,
+                                   syslog.LOG_INFO)
+            srv = self.nova_client.services.list(hostname, 'nova-compute')[0]
+            return True if srv.status == 'enabled' else False
+        except exceptions.ClientException as e:
+            error_code = "[RecoveryControllerUtilApi_0098]"
+            msg = 'Failed to list nova-compute on %s: %s' % (hostname, e)
+            self.rc_util.syslogout(error_code + msg, syslog.LOG_ERR)
+            raise
+
+    def enable_host_service_pf9(self, hostname):
+        """
+        Enable a service once host comes back up
+        :param hostname:
+        :return:
+        """
+        try:
+            self.rc_util.syslogout('Enable nova-compute on %s' % hostname,
+                                   syslog.LOG_INFO)
+            self.nova_client.services.enable(hostname, 'nova-compute')
+        except exceptions.ClientException as e:
+            error_code = "[RecoveryControllerUtilApi_0097]"
+            msg = 'Failed to enable nova-compute on %s: %s' % (hostname, e)
+            self.rc_util.syslogout(error_code + msg, syslog.LOG_ERR)
+            raise
+
     def do_instance_evacuate(self, uuid, targethost):
         """Call evacuate API for server instance.
 
