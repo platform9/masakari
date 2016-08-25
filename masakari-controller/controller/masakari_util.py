@@ -709,7 +709,7 @@ class RecoveryControllerUtilApi(object):
                                    syslog.LOG_INFO)
             token = self.auth_session.get_token()
             project_id = self.auth_session.get_project_id()
-            headers = {'X-OpenStack-Nova-API-Version': 2.11,
+            headers = {'X-OpenStack-Nova-API-Version': '2.11',
                        'Content-Type': 'application/json',
                        'X-Auth-Token': token}
             url = 'http://localhost:8774/v2.1/' + project_id + '/os-services/force-down'
