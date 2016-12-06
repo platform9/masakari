@@ -133,7 +133,7 @@ done
 if [ $1 = 0 ] ; then
     for daemon in %{daemons}
     do
-        /sbin/service %{project}-$daemon stop >/dev/null 2>&1
+        /sbin/service pf9-masakari-controller stop >/dev/null 2>&1
         /sbin/chkconfig --del pf9-masakari-controller
     done
 fi
