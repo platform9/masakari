@@ -1,0 +1,2227 @@
+masakari-controller/controller/masakari_app.py:24:89: E501 Line too long (91 > 88)
+   |
+22 |     from paste import httpserver
+23 |     from paste.deploy import loadapp
+24 |     httpserver.serve(loadapp('config:masakari-api-paste.ini', relative_to='/etc/masakari'),
+   |                                                                                         ^^^ E501
+25 |                      host='127.0.0.1', port='15868')
+   |
+
+masakari-controller/controller/masakari_config.py:22:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+20 |   """
+21 |
+22 | / import ConfigParser
+23 | | import syslog
+24 | | import paramiko
+25 | | import sys
+26 | | import os
+27 | | import logging
+28 | | import socket
+   | |_____________^ I001
+   |
+   = help: Organize imports
+
+masakari-controller/controller/masakari_config.py:24:8: F401 [*] `paramiko` imported but unused
+   |
+22 | import ConfigParser
+23 | import syslog
+24 | import paramiko
+   |        ^^^^^^^^ F401
+25 | import sys
+26 | import os
+   |
+   = help: Remove unused import: `paramiko`
+
+masakari-controller/controller/masakari_config.py:25:8: F401 [*] `sys` imported but unused
+   |
+23 | import syslog
+24 | import paramiko
+25 | import sys
+   |        ^^^ F401
+26 | import os
+27 | import logging
+   |
+   = help: Remove unused import: `sys`
+
+masakari-controller/controller/masakari_config.py:26:8: F401 [*] `os` imported but unused
+   |
+24 | import paramiko
+25 | import sys
+26 | import os
+   |        ^^ F401
+27 | import logging
+28 | import socket
+   |
+   = help: Remove unused import: `os`
+
+masakari-controller/controller/masakari_config.py:27:8: F401 [*] `logging` imported but unused
+   |
+25 | import sys
+26 | import os
+27 | import logging
+   |        ^^^^^^^ F401
+28 | import socket
+   |
+   = help: Remove unused import: `logging`
+
+masakari-controller/controller/masakari_config.py:28:8: F401 [*] `socket` imported but unused
+   |
+26 | import os
+27 | import logging
+28 | import socket
+   |        ^^^^^^ F401
+   |
+   = help: Remove unused import: `socket`
+
+masakari-controller/controller/masakari_controller.py:22:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+20 |   """
+21 |
+22 | / import eventlet
+23 | | from eventlet import wsgi
+24 | | import syslog
+25 | | import json
+26 | | from sqlalchemy import exc
+27 | | import sys
+28 | | import ConfigParser
+29 | | import threading
+30 | | import traceback
+31 | | import datetime
+32 | | import socket
+33 | | import os
+34 | | import errno
+35 | | import traceback
+36 | | import logging
+37 | | from eventlet import greenthread
+   | |________________________________^ I001
+38 |
+39 |   parentdir = os.path.abspath(os.path.join(os.path.dirname(__file__),
+   |
+   = help: Organize imports
+
+masakari-controller/controller/masakari_controller.py:22:8: F401 [*] `eventlet` imported but unused
+   |
+20 | """
+21 |
+22 | import eventlet
+   |        ^^^^^^^^ F401
+23 | from eventlet import wsgi
+24 | import syslog
+   |
+   = help: Remove unused import: `eventlet`
+
+masakari-controller/controller/masakari_controller.py:23:22: F401 [*] `eventlet.wsgi` imported but unused
+   |
+22 | import eventlet
+23 | from eventlet import wsgi
+   |                      ^^^^ F401
+24 | import syslog
+25 | import json
+   |
+   = help: Remove unused import: `eventlet.wsgi`
+
+masakari-controller/controller/masakari_controller.py:28:8: F401 [*] `ConfigParser` imported but unused
+   |
+26 | from sqlalchemy import exc
+27 | import sys
+28 | import ConfigParser
+   |        ^^^^^^^^^^^^ F401
+29 | import threading
+30 | import traceback
+   |
+   = help: Remove unused import: `ConfigParser`
+
+masakari-controller/controller/masakari_controller.py:32:8: F401 [*] `socket` imported but unused
+   |
+30 | import traceback
+31 | import datetime
+32 | import socket
+   |        ^^^^^^ F401
+33 | import os
+34 | import errno
+   |
+   = help: Remove unused import: `socket`
+
+masakari-controller/controller/masakari_controller.py:35:8: F811 [*] Redefinition of unused `traceback` from line 30
+   |
+33 | import os
+34 | import errno
+35 | import traceback
+   |        ^^^^^^^^^ F811
+36 | import logging
+37 | from eventlet import greenthread
+   |
+   = help: Remove definition: `traceback`
+
+masakari-controller/controller/masakari_controller.py:37:22: F401 [*] `eventlet.greenthread` imported but unused
+   |
+35 | import traceback
+36 | import logging
+37 | from eventlet import greenthread
+   |                      ^^^^^^^^^^^ F401
+38 |
+39 | parentdir = os.path.abspath(os.path.join(os.path.dirname(__file__),
+   |
+   = help: Remove unused import: `eventlet.greenthread`
+
+masakari-controller/controller/masakari_controller.py:47:1: E402 Module level import not at top of file
+   |
+45 |     sys.path = [parentdir] + sys.path
+46 |
+47 | import controller.masakari_starter as starter
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E402
+48 | from controller.masakari_util import RecoveryControllerUtil as util
+49 | from controller.masakari_util import RecoveryControllerUtilDb as util_db
+   |
+
+masakari-controller/controller/masakari_controller.py:47:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+45 |       sys.path = [parentdir] + sys.path
+46 |
+47 | / import controller.masakari_starter as starter
+48 | | from controller.masakari_util import RecoveryControllerUtil as util
+49 | | from controller.masakari_util import RecoveryControllerUtilDb as util_db
+50 | | import controller.masakari_config as config
+51 | | import controller.masakari_worker as worker
+52 | | import db.api as dbapi
+   | |______________________^ I001
+   |
+   = help: Organize imports
+
+masakari-controller/controller/masakari_controller.py:48:1: E402 Module level import not at top of file
+   |
+47 | import controller.masakari_starter as starter
+48 | from controller.masakari_util import RecoveryControllerUtil as util
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E402
+49 | from controller.masakari_util import RecoveryControllerUtilDb as util_db
+50 | import controller.masakari_config as config
+   |
+
+masakari-controller/controller/masakari_controller.py:49:1: E402 Module level import not at top of file
+   |
+47 | import controller.masakari_starter as starter
+48 | from controller.masakari_util import RecoveryControllerUtil as util
+49 | from controller.masakari_util import RecoveryControllerUtilDb as util_db
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E402
+50 | import controller.masakari_config as config
+51 | import controller.masakari_worker as worker
+   |
+
+masakari-controller/controller/masakari_controller.py:50:1: E402 Module level import not at top of file
+   |
+48 | from controller.masakari_util import RecoveryControllerUtil as util
+49 | from controller.masakari_util import RecoveryControllerUtilDb as util_db
+50 | import controller.masakari_config as config
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E402
+51 | import controller.masakari_worker as worker
+52 | import db.api as dbapi
+   |
+
+masakari-controller/controller/masakari_controller.py:51:1: E402 Module level import not at top of file
+   |
+49 | from controller.masakari_util import RecoveryControllerUtilDb as util_db
+50 | import controller.masakari_config as config
+51 | import controller.masakari_worker as worker
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E402
+52 | import db.api as dbapi
+   |
+
+masakari-controller/controller/masakari_controller.py:52:1: E402 Module level import not at top of file
+   |
+50 | import controller.masakari_config as config
+51 | import controller.masakari_worker as worker
+52 | import db.api as dbapi
+   | ^^^^^^^^^^^^^^^^^^^^^^ E402
+   |
+
+masakari-controller/controller/masakari_controller.py:171:89: E501 Line too long (93 > 88)
+    |
+169 |                         greenthread.sleep(int(node_err_wait))
+170 |                         """
+171 |                         # Mark nova compute service as 'down' to immediately start evacuation
+    |                                                                                         ^^^^^ E501
+172 |                         self.rc_worker.mark_host_down_pf9(row.notification_hostname)
+173 |                         # PF9 end
+    |
+
+masakari-controller/controller/masakari_controller.py:245:9: E722 Do not use bare `except`
+    |
+243 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+244 |             sys.exit()
+245 |         except:
+    |         ^^^^^^ E722
+246 |             error_type, error_value, traceback_ = sys.exc_info()
+247 |             tb_list = traceback.format_tb(traceback_)
+    |
+
+masakari-controller/controller/masakari_controller.py:334:13: F841 Local variable `check_id` is assigned to but never used
+    |
+332 |     def _check_json_param(self, json_data):
+333 |         try:
+334 |             check_id = json_data["id"]
+    |             ^^^^^^^^ F841
+335 |             check_type = json_data["type"]
+336 |             check_regionID = json_data["regionID"]
+    |
+    = help: Remove assignment to unused variable `check_id`
+
+masakari-controller/controller/masakari_controller.py:336:13: F841 Local variable `check_regionID` is assigned to but never used
+    |
+334 |             check_id = json_data["id"]
+335 |             check_type = json_data["type"]
+336 |             check_regionID = json_data["regionID"]
+    |             ^^^^^^^^^^^^^^ F841
+337 |             check_hostname = json_data["hostname"]
+338 |             check_uuid = json_data["uuid"]
+    |
+    = help: Remove assignment to unused variable `check_regionID`
+
+masakari-controller/controller/masakari_controller.py:337:13: F841 Local variable `check_hostname` is assigned to but never used
+    |
+335 |             check_type = json_data["type"]
+336 |             check_regionID = json_data["regionID"]
+337 |             check_hostname = json_data["hostname"]
+    |             ^^^^^^^^^^^^^^ F841
+338 |             check_uuid = json_data["uuid"]
+339 |             check_time = json_data["time"]
+    |
+    = help: Remove assignment to unused variable `check_hostname`
+
+masakari-controller/controller/masakari_controller.py:338:13: F841 Local variable `check_uuid` is assigned to but never used
+    |
+336 |             check_regionID = json_data["regionID"]
+337 |             check_hostname = json_data["hostname"]
+338 |             check_uuid = json_data["uuid"]
+    |             ^^^^^^^^^^ F841
+339 |             check_time = json_data["time"]
+340 |             check_eventID = json_data["eventID"]
+    |
+    = help: Remove assignment to unused variable `check_uuid`
+
+masakari-controller/controller/masakari_controller.py:339:13: F841 Local variable `check_time` is assigned to but never used
+    |
+337 |             check_hostname = json_data["hostname"]
+338 |             check_uuid = json_data["uuid"]
+339 |             check_time = json_data["time"]
+    |             ^^^^^^^^^^ F841
+340 |             check_eventID = json_data["eventID"]
+341 |             check_eventType = json_data["eventType"]
+    |
+    = help: Remove assignment to unused variable `check_time`
+
+masakari-controller/controller/masakari_controller.py:340:13: F841 Local variable `check_eventID` is assigned to but never used
+    |
+338 |             check_uuid = json_data["uuid"]
+339 |             check_time = json_data["time"]
+340 |             check_eventID = json_data["eventID"]
+    |             ^^^^^^^^^^^^^ F841
+341 |             check_eventType = json_data["eventType"]
+342 |             check_detail = json_data["detail"]
+    |
+    = help: Remove assignment to unused variable `check_eventID`
+
+masakari-controller/controller/masakari_controller.py:341:13: F841 Local variable `check_eventType` is assigned to but never used
+    |
+339 |             check_time = json_data["time"]
+340 |             check_eventID = json_data["eventID"]
+341 |             check_eventType = json_data["eventType"]
+    |             ^^^^^^^^^^^^^^^ F841
+342 |             check_detail = json_data["detail"]
+343 |             if check_type != 'VM':
+    |
+    = help: Remove assignment to unused variable `check_eventType`
+
+masakari-controller/controller/masakari_controller.py:342:13: F841 Local variable `check_detail` is assigned to but never used
+    |
+340 |             check_eventID = json_data["eventID"]
+341 |             check_eventType = json_data["eventType"]
+342 |             check_detail = json_data["detail"]
+    |             ^^^^^^^^^^^^ F841
+343 |             if check_type != 'VM':
+344 |                 check_startTime = json_data["startTime"]
+    |
+    = help: Remove assignment to unused variable `check_detail`
+
+masakari-controller/controller/masakari_controller.py:344:17: F841 Local variable `check_startTime` is assigned to but never used
+    |
+342 |             check_detail = json_data["detail"]
+343 |             if check_type != 'VM':
+344 |                 check_startTime = json_data["startTime"]
+    |                 ^^^^^^^^^^^^^^^ F841
+345 |                 check_endTime = json_data["endTime"]
+346 |             check_tzname = json_data["tzname"]
+    |
+    = help: Remove assignment to unused variable `check_startTime`
+
+masakari-controller/controller/masakari_controller.py:345:17: F841 Local variable `check_endTime` is assigned to but never used
+    |
+343 |             if check_type != 'VM':
+344 |                 check_startTime = json_data["startTime"]
+345 |                 check_endTime = json_data["endTime"]
+    |                 ^^^^^^^^^^^^^ F841
+346 |             check_tzname = json_data["tzname"]
+347 |             check_daylight = json_data["daylight"]
+    |
+    = help: Remove assignment to unused variable `check_endTime`
+
+masakari-controller/controller/masakari_controller.py:346:13: F841 Local variable `check_tzname` is assigned to but never used
+    |
+344 |                 check_startTime = json_data["startTime"]
+345 |                 check_endTime = json_data["endTime"]
+346 |             check_tzname = json_data["tzname"]
+    |             ^^^^^^^^^^^^ F841
+347 |             check_daylight = json_data["daylight"]
+348 |             check_cluster_port = json_data["cluster_port"]
+    |
+    = help: Remove assignment to unused variable `check_tzname`
+
+masakari-controller/controller/masakari_controller.py:347:13: F841 Local variable `check_daylight` is assigned to but never used
+    |
+345 |                 check_endTime = json_data["endTime"]
+346 |             check_tzname = json_data["tzname"]
+347 |             check_daylight = json_data["daylight"]
+    |             ^^^^^^^^^^^^^^ F841
+348 |             check_cluster_port = json_data["cluster_port"]
+349 |             return 0
+    |
+    = help: Remove assignment to unused variable `check_daylight`
+
+masakari-controller/controller/masakari_controller.py:348:13: F841 Local variable `check_cluster_port` is assigned to but never used
+    |
+346 |             check_tzname = json_data["tzname"]
+347 |             check_daylight = json_data["daylight"]
+348 |             check_cluster_port = json_data["cluster_port"]
+    |             ^^^^^^^^^^^^^^^^^^ F841
+349 |             return 0
+350 |         except KeyError:
+    |
+    = help: Remove assignment to unused variable `check_cluster_port`
+
+masakari-controller/controller/masakari_controller.py:491:9: E722 Do not use bare `except`
+    |
+489 |             start_response(
+490 |                 '500 Internal Server Error', [('Content-Type', 'text/plain')])
+491 |         except:
+    |         ^^^^^^ E722
+492 |             error_type, error_value, traceback_ = sys.exc_info()
+493 |             tb_list = traceback.format_tb(traceback_)
+    |
+
+masakari-controller/controller/masakari_controller.py:664:16: F821 Undefined name `long`
+    |
+662 |             db_time = row.notification_time
+663 |             delta = notification_time - db_time
+664 |             if long(delta.total_seconds()) <= long(
+    |                ^^^^ F821
+665 |                     notification_time_difference):
+666 |                 flg = 1
+    |
+
+masakari-controller/controller/masakari_controller.py:664:47: F821 Undefined name `long`
+    |
+662 |             db_time = row.notification_time
+663 |             delta = notification_time - db_time
+664 |             if long(delta.total_seconds()) <= long(
+    |                                               ^^^^ F821
+665 |                     notification_time_difference):
+666 |                 flg = 1
+    |
+
+masakari-controller/controller/masakari_starter.py:22:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+20 |   """
+21 |
+22 | / import threading
+23 | | import sys
+24 | | import datetime
+25 | | import ConfigParser
+26 | | import threading
+27 | | import syslog
+28 | | import traceback
+29 | | import json
+30 | | # import RecoveryControllerWorker
+31 | | # import RecoveryControllerConfig
+32 | | # import RecoveryControllerUtil
+33 | | import masakari_worker as worker
+34 | | import masakari_config as config
+35 | | import masakari_util as util
+36 | | from eventlet import greenthread
+37 | | import os
+   | |_________^ I001
+38 |
+39 |   parentdir = os.path.abspath(os.path.join(os.path.dirname(__file__),
+   |
+   = help: Organize imports
+
+masakari-controller/controller/masakari_starter.py:25:8: F401 [*] `ConfigParser` imported but unused
+   |
+23 | import sys
+24 | import datetime
+25 | import ConfigParser
+   |        ^^^^^^^^^^^^ F401
+26 | import threading
+27 | import syslog
+   |
+   = help: Remove unused import: `ConfigParser`
+
+masakari-controller/controller/masakari_starter.py:26:8: F811 [*] Redefinition of unused `threading` from line 22
+   |
+24 | import datetime
+25 | import ConfigParser
+26 | import threading
+   |        ^^^^^^^^^ F811
+27 | import syslog
+28 | import traceback
+   |
+   = help: Remove definition: `threading`
+
+masakari-controller/controller/masakari_starter.py:29:8: F401 [*] `json` imported but unused
+   |
+27 | import syslog
+28 | import traceback
+29 | import json
+   |        ^^^^ F401
+30 | # import RecoveryControllerWorker
+31 | # import RecoveryControllerConfig
+   |
+   = help: Remove unused import: `json`
+
+masakari-controller/controller/masakari_starter.py:34:27: F401 [*] `masakari_config` imported but unused
+   |
+32 | # import RecoveryControllerUtil
+33 | import masakari_worker as worker
+34 | import masakari_config as config
+   |                           ^^^^^^ F401
+35 | import masakari_util as util
+36 | from eventlet import greenthread
+   |
+   = help: Remove unused import: `masakari_config`
+
+masakari-controller/controller/masakari_starter.py:47:1: E402 Module level import not at top of file
+   |
+45 |     sys.path = [parentdir] + sys.path
+46 |
+47 | import db.api as dbapi
+   | ^^^^^^^^^^^^^^^^^^^^^^ E402
+   |
+
+masakari-controller/controller/masakari_starter.py:72:16: F821 Undefined name `long`
+   |
+71 |         delta = timestamp_1 - timestamp_2
+72 |         return long(delta.total_seconds())
+   |                ^^^^ F821
+73 |
+74 |     def _create_vm_list_db_for_failed_instance(self,
+   |
+
+masakari-controller/controller/masakari_starter.py:102:34: F821 Undefined name `long`
+    |
+100 |                     datetime.datetime.now(), result_create_at)
+101 |                 if result_progress == 2 and \
+102 |                         delta <= long(interval_to_be_retry):
+    |                                  ^^^^ F821
+103 |                     if result_retry_cnt < long(max_retry_cnt):
+104 |                         primary_id = self.rc_util_db.insert_vm_list_db(
+    |
+
+masakari-controller/controller/masakari_starter.py:103:43: F821 Undefined name `long`
+    |
+101 |                 if result_progress == 2 and \
+102 |                         delta <= long(interval_to_be_retry):
+103 |                     if result_retry_cnt < long(max_retry_cnt):
+    |                                           ^^^^ F821
+104 |                         primary_id = self.rc_util_db.insert_vm_list_db(
+105 |                             session,
+    |
+
+masakari-controller/controller/masakari_starter.py:124:33: F821 Undefined name `long`
+    |
+122 |                         return None
+123 |                 elif result_progress == 2 and \
+124 |                         delta > long(interval_to_be_retry):
+    |                                 ^^^^ F821
+125 |                     primary_id = self.rc_util_db.insert_vm_list_db(
+126 |                         session, notification_id, notification_uuid, 0)
+    |
+
+masakari-controller/controller/masakari_starter.py:158:13: F841 Local variable `interval_to_be_retry` is assigned to but never used
+    |
+156 |                 'recover_starter')
+157 |
+158 |             interval_to_be_retry = conf_recover_starter_dic.get(
+    |             ^^^^^^^^^^^^^^^^^^^^ F841
+159 |                 "interval_to_be_retry")
+160 |             max_retry_cnt = conf_recover_starter_dic.get("max_retry_cnt")
+    |
+    = help: Remove assignment to unused variable `interval_to_be_retry`
+
+masakari-controller/controller/masakari_starter.py:160:13: F841 Local variable `max_retry_cnt` is assigned to but never used
+    |
+158 |             interval_to_be_retry = conf_recover_starter_dic.get(
+159 |                 "interval_to_be_retry")
+160 |             max_retry_cnt = conf_recover_starter_dic.get("max_retry_cnt")
+    |             ^^^^^^^^^^^^^ F841
+161 |             row_cnt = dbapi.get_one_vm_list_by_uuid_and_progress_create_at_last(
+162 |                 session,
+    |
+    = help: Remove assignment to unused variable `max_retry_cnt`
+
+masakari-controller/controller/masakari_starter.py:217:20: E712 Avoid equality comparisons to `True`; use `retry_mode:` for truth checks
+    |
+215 |             # create and start thread
+216 |             if primary_id:
+217 |                 if retry_mode == True:
+    |                    ^^^^^^^^^^^^^^^^^^ E712
+218 |                     # Skip recovery_instance.
+219 |                     # Will delegate to handle_pending_instances
+    |
+    = help: Replace with `retry_mode`
+
+masakari-controller/controller/masakari_starter.py:249:9: E722 Do not use bare `except`
+    |
+247 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+248 |             return
+249 |         except:
+    |         ^^^^^^ E722
+250 |             self.rc_util.syslogout_ex("RecoveryControllerStarter_0013",
+251 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_starter.py:299:17: F841 Local variable `recover_to` is assigned to but never used
+    |
+297 |             else:
+298 |                 # PF9 change
+299 |                 recover_to = None
+    |                 ^^^^^^^^^^ F841
+300 |                 """
+301 |                 result = dbapi.get_all_notification_list_by_id_for_update(
+    |
+    = help: Remove assignment to unused variable `recover_to`
+
+masakari-controller/controller/masakari_starter.py:365:28: E712 Avoid equality comparisons to `True`; use `retry_mode:` for truth checks
+    |
+364 |                     if primary_id:
+365 |                         if retry_mode == True:
+    |                            ^^^^^^^^^^^^^^^^^^ E712
+366 |                             # Skip recovery_instance thread. Will delegate to
+367 |                             # ...
+    |
+    = help: Replace with `retry_mode`
+
+masakari-controller/controller/masakari_starter.py:383:28: E712 Avoid equality comparisons to `True`; use `retry_mode:` for truth checks
+    |
+381 |                                       sem_recovery_instance)).start()
+382 |                     else:
+383 |                         if retry_mode == True:
+    |                            ^^^^^^^^^^^^^^^^^^ E712
+384 |                             continue
+385 |                         else:
+    |
+    = help: Replace with `retry_mode`
+
+masakari-controller/controller/masakari_starter.py:426:9: E722 Do not use bare `except`
+    |
+424 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+425 |             return
+426 |         except:
+    |         ^^^^^^ E722
+427 |             self.rc_util.syslogout_ex("RecoveryControllerStarter_0018",
+428 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_starter.py:557:9: E722 Do not use bare `except`
+    |
+555 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+556 |             return
+557 |         except:
+    |         ^^^^^^ E722
+558 |             self.rc_util.syslogout_ex("RecoveryControllerStarter_0021",
+559 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_util.py:21:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+19 |   Management module of utility classes for VM recovery control
+20 |   """
+21 | / import ConfigParser
+22 | | import datetime
+23 | | import json
+24 | | import logging
+25 | | import os
+26 | | import paramiko
+27 | | import re
+28 | | import requests
+29 | | import masakari_config as config
+30 | | import socket
+31 | | import subprocess
+32 | | import sys
+33 | | import syslog
+34 | | import threading
+35 | | import traceback
+36 | | from eventlet import greenthread
+37 | | import errno
+38 | | import json
+39 | |
+40 | | from keystoneauth1 import loading
+41 | | from keystoneauth1 import session
+42 | | from keystoneclient import client as keystone_client
+43 | | from novaclient import client as nova_client
+44 | | from novaclient import exceptions
+45 | | from sqlalchemy import exc
+   | |__________________________^ I001
+46 |
+47 |   parentdir = os.path.abspath(os.path.join(os.path.dirname(__file__),
+   |
+   = help: Organize imports
+
+masakari-controller/controller/masakari_util.py:21:8: F401 [*] `ConfigParser` imported but unused
+   |
+19 | Management module of utility classes for VM recovery control
+20 | """
+21 | import ConfigParser
+   |        ^^^^^^^^^^^^ F401
+22 | import datetime
+23 | import json
+   |
+   = help: Remove unused import: `ConfigParser`
+
+masakari-controller/controller/masakari_util.py:26:8: F401 [*] `paramiko` imported but unused
+   |
+24 | import logging
+25 | import os
+26 | import paramiko
+   |        ^^^^^^^^ F401
+27 | import re
+28 | import requests
+   |
+   = help: Remove unused import: `paramiko`
+
+masakari-controller/controller/masakari_util.py:27:8: F401 [*] `re` imported but unused
+   |
+25 | import os
+26 | import paramiko
+27 | import re
+   |        ^^ F401
+28 | import requests
+29 | import masakari_config as config
+   |
+   = help: Remove unused import: `re`
+
+masakari-controller/controller/masakari_util.py:29:27: F401 [*] `masakari_config` imported but unused
+   |
+27 | import re
+28 | import requests
+29 | import masakari_config as config
+   |                           ^^^^^^ F401
+30 | import socket
+31 | import subprocess
+   |
+   = help: Remove unused import: `masakari_config`
+
+masakari-controller/controller/masakari_util.py:31:8: F401 [*] `subprocess` imported but unused
+   |
+29 | import masakari_config as config
+30 | import socket
+31 | import subprocess
+   |        ^^^^^^^^^^ F401
+32 | import sys
+33 | import syslog
+   |
+   = help: Remove unused import: `subprocess`
+
+masakari-controller/controller/masakari_util.py:36:22: F401 [*] `eventlet.greenthread` imported but unused
+   |
+34 | import threading
+35 | import traceback
+36 | from eventlet import greenthread
+   |                      ^^^^^^^^^^^ F401
+37 | import errno
+38 | import json
+   |
+   = help: Remove unused import: `eventlet.greenthread`
+
+masakari-controller/controller/masakari_util.py:38:8: F811 [*] Redefinition of unused `json` from line 23
+   |
+36 | from eventlet import greenthread
+37 | import errno
+38 | import json
+   |        ^^^^ F811
+39 |
+40 | from keystoneauth1 import loading
+   |
+   = help: Remove definition: `json`
+
+masakari-controller/controller/masakari_util.py:55:1: E402 Module level import not at top of file
+   |
+53 |     sys.path = [parentdir] + sys.path
+54 |
+55 | import db.api as dbapi
+   | ^^^^^^^^^^^^^^^^^^^^^^ E402
+56 | from db.models import NotificationList, VmList, ReserveList
+   |
+
+masakari-controller/controller/masakari_util.py:55:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+53 |       sys.path = [parentdir] + sys.path
+54 |
+55 | / import db.api as dbapi
+56 | | from db.models import NotificationList, VmList, ReserveList
+   | |___________________________________________________________^ I001
+57 |
+58 |   class RecoveryControllerUtilDb(object):
+   |
+   = help: Organize imports
+
+masakari-controller/controller/masakari_util.py:56:1: E402 Module level import not at top of file
+   |
+55 | import db.api as dbapi
+56 | from db.models import NotificationList, VmList, ReserveList
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E402
+57 |
+58 | class RecoveryControllerUtilDb(object):
+   |
+
+masakari-controller/controller/masakari_util.py:56:49: F401 [*] `db.models.ReserveList` imported but unused
+   |
+55 | import db.api as dbapi
+56 | from db.models import NotificationList, VmList, ReserveList
+   |                                                 ^^^^^^^^^^^ F401
+57 |
+58 | class RecoveryControllerUtilDb(object):
+   |
+   = help: Remove unused import: `db.models.ReserveList`
+
+masakari-controller/controller/masakari_util.py:236:13: F841 Local variable `result` is assigned to but never used
+    |
+235 |         try:
+236 |             result = dbapi.add_notification_list(
+    |             ^^^^^^ F841
+237 |                 session,
+238 |                 create_at=create_at,
+    |
+    = help: Remove assignment to unused variable `result`
+
+masakari-controller/controller/masakari_util.py:716:89: E501 Line too long (96 > 88)
+    |
+714 |                        'X-Auth-Token': token}
+715 |             url = 'http://localhost:8774/v2.1/' + project_id + '/os-services/force-down'
+716 |             resp = requests.put(url, headers=headers, data=json.dumps({"binary": "nova-compute",
+    |                                                                                         ^^^^^^^^ E501
+717 |                                                      "host": hostname,
+718 |                                                      "forced_down": "True"}))
+    |
+
+masakari-controller/controller/masakari_worker.py:22:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+20 |   """
+21 |
+22 | / import ConfigParser
+23 | | import syslog
+24 | | import traceback
+25 | | import sys
+26 | | import json
+27 | | import datetime
+28 | | from eventlet import greenthread
+29 | | # import masakari_config as config
+30 | | import masakari_util as util
+31 | | import os
+   | |_________^ I001
+32 |   parentdir = os.path.abspath(os.path.join(os.path.dirname(__file__),
+33 |                                            os.path.pardir))
+   |
+   = help: Organize imports
+
+masakari-controller/controller/masakari_worker.py:22:8: F401 [*] `ConfigParser` imported but unused
+   |
+20 | """
+21 |
+22 | import ConfigParser
+   |        ^^^^^^^^^^^^ F401
+23 | import syslog
+24 | import traceback
+   |
+   = help: Remove unused import: `ConfigParser`
+
+masakari-controller/controller/masakari_worker.py:26:8: F401 [*] `json` imported but unused
+   |
+24 | import traceback
+25 | import sys
+26 | import json
+   |        ^^^^ F401
+27 | import datetime
+28 | from eventlet import greenthread
+   |
+   = help: Remove unused import: `json`
+
+masakari-controller/controller/masakari_worker.py:27:8: F401 [*] `datetime` imported but unused
+   |
+25 | import sys
+26 | import json
+27 | import datetime
+   |        ^^^^^^^^ F401
+28 | from eventlet import greenthread
+29 | # import masakari_config as config
+   |
+   = help: Remove unused import: `datetime`
+
+masakari-controller/controller/masakari_worker.py:40:1: E402 Module level import not at top of file
+   |
+38 |     sys.path = [parentdir] + sys.path
+39 |
+40 | import db.api as dbapi
+   | ^^^^^^^^^^^^^^^^^^^^^^ E402
+   |
+
+masakari-controller/controller/masakari_worker.py:245:9: E722 Do not use bare `except`
+    |
+243 |             for tb in tb_list:
+244 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+245 |         except:
+    |         ^^^^^^ E722
+246 |             self.rc_util.syslogout_ex("RecoveryControllerWorker_0016",
+247 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_worker.py:283:9: E722 Do not use bare `except`
+    |
+281 |             for tb in tb_list:
+282 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+283 |         except:
+    |         ^^^^^^ E722
+284 |             self.rc_util.syslogout_ex("RecoveryControllerWorker_0019",
+285 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_worker.py:346:9: E722 Do not use bare `except`
+    |
+344 |             for tb in tb_list:
+345 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+346 |         except:
+    |         ^^^^^^ E722
+347 |             self.rc_util.syslogout_ex("RecoveryControllerWorker_0021",
+348 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_worker.py:385:9: E722 Do not use bare `except`
+    |
+383 |             for tb in tb_list:
+384 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+385 |         except:
+    |         ^^^^^^ E722
+386 |             self.rc_util.syslogout_ex("RecoveryControllerWorker_0024",
+387 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_worker.py:425:9: E722 Do not use bare `except`
+    |
+423 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+424 |             return
+425 |         except:
+    |         ^^^^^^ E722
+426 |             self.rc_util.syslogout_ex("RecoveryControllerWorker_0032",
+427 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_worker.py:444:9: E722 Do not use bare `except`
+    |
+442 |         try:
+443 |             self.rc_util_api.force_host_down_pf9(hostname)
+444 |         except:
+    |         ^^^^^^ E722
+445 |             self.rc_util.syslogout_ex("RecoveryControllerWorker_0099",
+446 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_worker.py:465:9: E722 Do not use bare `except`
+    |
+463 |             if not is_up:
+464 |                 self.rc_util_api.enable_host_service_pf9(hostname)
+465 |         except:
+    |         ^^^^^^ E722
+466 |             self.rc_util.syslogout_ex("RecoveryControllerWorker_0098",
+467 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_worker.py:542:9: E722 Do not use bare `except`
+    |
+540 |                 self.rc_util.syslogout(tb, syslog.LOG_ERR)
+541 |             return
+542 |         except:
+    |         ^^^^^^ E722
+543 |             self.rc_util.syslogout_ex("RecoveryControllerWorker_0037",
+544 |                                       syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/masakari_worker.py:568:13: E722 Do not use bare `except`
+    |
+566 |                 if sem:
+567 |                     sem.release()
+568 |             except:
+    |             ^^^^^^ E722
+569 |                 self.rc_util.syslogout_ex("RecoveryControllerWorker_0039",
+570 |                                           syslog.LOG_ERR)
+    |
+
+masakari-controller/controller/tests/fakes.py:18:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+16 | # limitations under the License.
+17 |
+18 | import mock
+   | ^^^^^^^^^^^ I001
+19 |
+20 | class FakeNovaServer(mock.MagicMock):
+   |
+   = help: Organize imports
+
+masakari-controller/controller/tests/test_masakari_worker.py:18:8: F401 [*] `json` imported but unused
+   |
+16 | # limitations under the License.
+17 |
+18 | import json
+   |        ^^^^ F401
+19 | import os
+20 | import sys
+   |
+   = help: Remove unused import: `json`
+
+masakari-controller/controller/tests/test_masakari_worker.py:29:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+27 |   sys.path.append((os.path.dirname(os.path.dirname(os.path.abspath(__file__)))))
+28 |
+29 | / import fakes as nova_fakes
+30 | | import masakari_config
+31 | | import masakari_util
+32 | | import masakari_worker
+   | |______________________^ I001
+33 |
+34 |   class TestRecoveryControllerWorker(unittest.TestCase):
+   |
+   = help: Organize imports
+
+masakari-controller/controller/tests/test_masakari_worker.py:31:8: F401 [*] `masakari_util` imported but unused
+   |
+29 | import fakes as nova_fakes
+30 | import masakari_config
+31 | import masakari_util
+   |        ^^^^^^^^^^^^^ F401
+32 | import masakari_worker
+   |
+   = help: Remove unused import: `masakari_util`
+
+masakari-controller/controller/tests/test_masakari_worker.py:40:71: F841 Local variable `mock_api` is assigned to but never used
+   |
+38 |             '/masakari-controller-test.conf'
+39 |         rc_config = masakari_config.RecoveryControllerConfig(sample_config)
+40 |         with mock.patch('masakari_util.RecoveryControllerUtilApi') as mock_api:
+   |                                                                       ^^^^^^^^ F841
+41 |             self.worker = masakari_worker.RecoveryControllerWorker(rc_config)
+   |
+   = help: Remove assignment to unused variable `mock_api`
+
+masakari-controller/db/api.py:20:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+18 |   """
+19 |
+20 | / from sqlalchemy import engine, create_engine, or_
+21 | | from sqlalchemy.orm import sessionmaker
+22 | | from sqlalchemy.sql.expression import desc
+23 | | from models import NotificationList, VmList, ReserveList
+24 | | from models import Base
+25 | | from sqlalchemy_utils.functions import database_exists, create_database
+26 | | from sqlalchemy import asc
+27 | | from sqlalchemy.orm import scoped_session
+28 | | from sqlalchemy import distinct
+29 | | import sqlalchemy.exc as dbexc
+30 | | from contextlib import contextmanager
+31 | | import os
+32 | | import sys
+33 | | import traceback
+34 | | import syslog
+35 | | from functools import wraps
+36 | | import time
+   | |___________^ I001
+37 |   parentdir = os.path.abspath(os.path.join(os.path.dirname(__file__),
+38 |                                            os.path.pardir))
+   |
+   = help: Organize imports
+
+masakari-controller/db/api.py:28:24: F401 [*] `sqlalchemy.distinct` imported but unused
+   |
+26 | from sqlalchemy import asc
+27 | from sqlalchemy.orm import scoped_session
+28 | from sqlalchemy import distinct
+   |                        ^^^^^^^^ F401
+29 | import sqlalchemy.exc as dbexc
+30 | from contextlib import contextmanager
+   |
+   = help: Remove unused import: `sqlalchemy.distinct`
+
+masakari-controller/db/api.py:33:8: F401 [*] `traceback` imported but unused
+   |
+31 | import os
+32 | import sys
+33 | import traceback
+   |        ^^^^^^^^^ F401
+34 | import syslog
+35 | from functools import wraps
+   |
+   = help: Remove unused import: `traceback`
+
+masakari-controller/db/api.py:34:8: F401 [*] `syslog` imported but unused
+   |
+32 | import sys
+33 | import traceback
+34 | import syslog
+   |        ^^^^^^ F401
+35 | from functools import wraps
+36 | import time
+   |
+   = help: Remove unused import: `syslog`
+
+masakari-controller/db/api.py:45:1: E402 Module level import not at top of file
+   |
+43 |     sys.path = [parentdir] + sys.path
+44 |
+45 | import controller.masakari_config as config
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E402
+46 | # Todo(samapth): Do not do this to import log handler
+47 | # import controller.masakari_util.RecoveryControllerUtil as util
+   |
+
+masakari-controller/db/api.py:45:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+43 |     sys.path = [parentdir] + sys.path
+44 |
+45 | import controller.masakari_config as config
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ I001
+46 | # Todo(samapth): Do not do this to import log handler
+47 | # import controller.masakari_util.RecoveryControllerUtil as util
+   |
+   = help: Organize imports
+
+masakari-controller/db/api.py:60:12: SyntaxError: Multiple exception types must be parenthesized on Python 3.13 (syntax was added in Python 3.14)
+   |
+58 |     try:
+59 |         yield
+60 |     except dbexc.SQLAlchemyError, e:
+   |            ^^^^^^^^^^^^^^^^^^^^^^^^
+61 |         raise e
+   |
+
+masakari-controller/db/api.py:60:35: F821 Undefined name `e`
+   |
+58 |     try:
+59 |         yield
+60 |     except dbexc.SQLAlchemyError, e:
+   |                                   ^ F821
+61 |         raise e
+   |
+
+masakari-controller/db/api.py:61:15: F821 Undefined name `e`
+   |
+59 |         yield
+60 |     except dbexc.SQLAlchemyError, e:
+61 |         raise e
+   |               ^ F821
+   |
+
+masakari-controller/db/api.py:124:8: F632 [*] Use `==` to compare constant literals
+    |
+122 |     #                mysql and postgresql.
+123 |     #                need to extend the support for other dbs
+124 |     if drivername is "postgresql":
+    |        ^^^^^^^^^^^^^^^^^^^^^^^^^^ F632
+125 |         query = {'client_encoding': charset}
+126 |     elif drivername is "mysql":
+    |
+    = help: Replace `is` with `==`
+
+masakari-controller/db/api.py:126:10: F632 [*] Use `==` to compare constant literals
+    |
+124 |     if drivername is "postgresql":
+125 |         query = {'client_encoding': charset}
+126 |     elif drivername is "mysql":
+    |          ^^^^^^^^^^^^^^^^^^^^^ F632
+127 |         query = {'charset': charset}
+128 |     else:
+    |
+    = help: Replace `is` with `==`
+
+masakari-controller/db/create_tables.py:42:11: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+40 | except Exception as e:
+41 |     # error handling
+42 |     print "failed to load configuration parameters."
+   |           ^
+43 |     print "Exception: ", e
+44 |     sys.exit(1)
+   |
+
+masakari-controller/db/create_tables.py:43:11: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+41 |     # error handling
+42 |     print "failed to load configuration parameters."
+43 |     print "Exception: ", e
+   |           ^
+44 |     sys.exit(1)
+   |
+
+masakari-controller/db/create_tables.py:46:7: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+44 |     sys.exit(1)
+45 |
+46 | print "host:", host, "db:", db, "user:", user, "passwd:", passwd, "charset:", charset
+   |       ^
+47 |
+48 | try:
+   |
+
+masakari-controller/db/create_tables.py:58:11: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+56 | except Exception as e:
+57 |     # error handling
+58 |     print "failed to create tables."
+   |           ^
+59 |     print "Exception: ", e
+60 |     sys.exit(2)
+   |
+
+masakari-controller/db/create_tables.py:59:11: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+57 |     # error handling
+58 |     print "failed to create tables."
+59 |     print "Exception: ", e
+   |           ^
+60 |     sys.exit(2)
+   |
+
+masakari-controller/db/create_tables.py:62:7: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+60 |     sys.exit(2)
+61 |
+62 | print "Successfully created tables"
+   |       ^
+63 | sys.exit(0)
+   |
+
+masakari-controller/db/models.py:18:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+16 |   SQLAlchemy model for masakari data.
+17 |   """
+18 | / from sqlalchemy import Column, Integer, DateTime, String
+19 | | from sqlalchemy.ext.declarative import declarative_base
+   | |_______________________________________________________^ I001
+20 |
+21 |   Base = declarative_base()
+   |
+   = help: Organize imports
+
+masakari-controller/setup.py:2:1: I001 [*] Import block is un-sorted or un-formatted
+  |
+1 |   #!/usr/bin/env python
+2 | / import os
+3 | | from setuptools import setup
+  | |____________________________^ I001
+4 |
+5 |   # Since masakari-controller does not own its own repo
+  |
+  = help: Organize imports
+
+masakari-controller/utils/notification_status_manage.py:47:89: E501 Line too long (94 > 88)
+   |
+45 |     def __init__(self):
+46 |
+47 |         parser = argparse.ArgumentParser(prog='notification_status_manage.py', add_help=False)
+   |                                                                                         ^^^^^^ E501
+48 |
+49 |         parser.add_argument('--mode', help='list')
+   |
+
+masakari-controller/utils/notification_status_manage.py:61:15: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+60 |         msg = "notification status manage execution start"
+61 |         print msg
+   |               ^
+62 |
+63 |         try:
+   |
+
+masakari-controller/utils/notification_status_manage.py:82:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+80 |         except:
+81 |             msg = "notification status manage execution failure"
+82 |             print msg
+   |                   ^
+83 |
+84 |         finally:
+   |
+
+masakari-controller/utils/notification_status_manage.py:86:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+84 |         finally:
+85 |             msg = "notification status manage execution end"
+86 |             print msg
+   |                   ^
+   |
+
+masakari-controller/utils/notification_status_manage.py:138:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+136 |         except:
+137 |             msg = "db connection failed"
+138 |             print msg
+    |                   ^
+139 |             raise
+    |
+
+masakari-controller/utils/notification_status_manage.py:165:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+163 |             if row_cnt == 0:
+164 |                 msg = "none notification_list"
+165 |                 print msg
+    |                       ^
+166 |                 return None
+    |
+
+masakari-controller/utils/notification_status_manage.py:202:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+200 |         except:
+201 |             msg = "notification_list select failed"
+202 |             print msg
+    |                   ^
+203 |             raise
+    |
+
+masakari-controller/utils/notification_status_manage.py:220:89: E501 Line too long (110 > 88)
+    |
+218 | #(command)
+219 | #
+220 | #[python notification_status_manage.py --mode list --db-user root --db-password openstack --db-host localhost]
+    |                                                                                         ^^^^^^^^^^^^^^^^^^^^^^ E501
+221 | #
+222 | ##########################################################################################
+    |
+
+masakari-controller/utils/recovery_status_manage.py:48:89: E501 Line too long (90 > 88)
+   |
+46 |     def __init__(self):
+47 |
+48 |         parser = argparse.ArgumentParser(prog='recovery_status_manage.py', add_help=False)
+   |                                                                                         ^^ E501
+49 |
+50 |         parser.add_argument('--mode', help='list/update')
+   |
+
+masakari-controller/utils/recovery_status_manage.py:63:15: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+62 |         msg = "recovery status manage execution start"
+63 |         print msg
+   |               ^
+64 |
+65 |         try:
+   |
+
+masakari-controller/utils/recovery_status_manage.py:106:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+104 |         except:
+105 |             msg = "recovery status manage execution failure"
+106 |             print msg
+    |                   ^
+107 |
+108 |         finally:
+    |
+
+masakari-controller/utils/recovery_status_manage.py:110:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+108 |         finally:
+109 |             msg = "recovery status manage execution end"
+110 |             print msg
+    |                   ^
+    |
+
+masakari-controller/utils/recovery_status_manage.py:168:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+166 |         except:
+167 |             msg = "db connection failed"
+168 |             print msg
+    |                   ^
+169 |             raise
+    |
+
+masakari-controller/utils/recovery_status_manage.py:195:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+193 |             if row_cnt == 0:
+194 |                 msg = "none vm_list"
+195 |                 print msg
+    |                       ^
+196 |                 return None
+    |
+
+masakari-controller/utils/recovery_status_manage.py:220:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+218 |         except:
+219 |             msg = "vm_list select(all) failed"
+220 |             print msg
+    |                   ^
+221 |             raise
+    |
+
+masakari-controller/utils/recovery_status_manage.py:256:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+254 |             if row_cnt == 0:
+255 |                 msg = "none vm_list"
+256 |                 print msg
+    |                       ^
+257 |                 return None
+    |
+
+masakari-controller/utils/recovery_status_manage.py:285:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+283 |         except:
+284 |             msg = "vm_list select(uuid) failed"
+285 |             print msg
+    |                   ^
+286 |             raise
+    |
+
+masakari-controller/utils/recovery_status_manage.py:320:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+318 |             if row_cnt == 0:
+319 |                 msg = "none vm_list"
+320 |                 print msg
+    |                       ^
+321 |                 return None
+    |
+
+masakari-controller/utils/recovery_status_manage.py:360:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+358 |         except:
+359 |             msg = "vm_list update failed"
+360 |             print msg
+    |                   ^
+361 |             raise
+    |
+
+masakari-controller/utils/recovery_status_manage.py:378:89: E501 Line too long (106 > 88)
+    |
+376 | #(command)
+377 | #
+378 | #[python recovery_status_manage.py --mode list --db-user root --db-password openstack --db-host localhost]
+    |                                                                                         ^^^^^^^^^^^^^^^^^^ E501
+379 | #[python recovery_status_manage.py --mode list --uuid DB1-UUID-0001 --db-user root --db-password openstack --db-host localhost]
+380 | #[python recovery_status_manage.py --mode update --uuid DB1-UUID-0001 --db-user root --db-password openstack --db-host localhost]
+    |
+
+masakari-controller/utils/recovery_status_manage.py:379:89: E501 Line too long (127 > 88)
+    |
+377 | #
+378 | #[python recovery_status_manage.py --mode list --db-user root --db-password openstack --db-host localhost]
+379 | #[python recovery_status_manage.py --mode list --uuid DB1-UUID-0001 --db-user root --db-password openstack --db-host localhost]
+    |                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E501
+380 | #[python recovery_status_manage.py --mode update --uuid DB1-UUID-0001 --db-user root --db-password openstack --db-host localhost]
+381 | #
+    |
+
+masakari-controller/utils/recovery_status_manage.py:380:89: E501 Line too long (129 > 88)
+    |
+378 | #[python recovery_status_manage.py --mode list --db-user root --db-password openstack --db-host localhost]
+379 | #[python recovery_status_manage.py --mode list --uuid DB1-UUID-0001 --db-user root --db-password openstack --db-host localhost]
+380 | #[python recovery_status_manage.py --mode update --uuid DB1-UUID-0001 --db-user root --db-password openstack --db-host localhost]
+    |                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E501
+381 | #
+382 | ##########################################################################################
+    |
+
+masakari-controller/utils/reserve_host_manage.py:66:15: SyntaxError: Simple statements must be separated by newlines or semicolons
+   |
+65 |         msg = "reserve_host_manage execution start"
+66 |         print msg
+   |               ^
+67 |
+68 |         try:
+   |
+
+masakari-controller/utils/reserve_host_manage.py:128:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+126 |         except:
+127 |             msg = "reserve_host_manage execution failure"
+128 |             print msg
+    |                   ^
+129 |
+130 |         finally:
+    |
+
+masakari-controller/utils/reserve_host_manage.py:132:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+130 |         finally:
+131 |             msg = "reserve_host_manage execution end"
+132 |             print msg
+    |                   ^
+133 |
+134 | ################################################################################
+    |
+
+masakari-controller/utils/reserve_host_manage.py:209:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+207 |         except:
+208 |             msg = "db connection failed"
+209 |             print msg
+    |                   ^
+210 |             raise
+    |
+
+masakari-controller/utils/reserve_host_manage.py:241:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+239 |             if row_cnt > 0:
+240 |                 msg = "host is already registered"
+241 |                 print msg
+    |                       ^
+242 |                 return
+    |
+
+masakari-controller/utils/reserve_host_manage.py:283:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+281 |         except:
+282 |             msg = "db insert failed"
+283 |             print msg
+    |                   ^
+284 |             raise
+    |
+
+masakari-controller/utils/reserve_host_manage.py:328:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+326 |             if row_cnt == 0:
+327 |                 msg = "none updated host"
+328 |                 print msg
+    |                       ^
+329 |                 return
+    |
+
+masakari-controller/utils/reserve_host_manage.py:338:27: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+336 |                 if row_cnt > 0:
+337 |                     msg = "host is already registered"
+338 |                     print msg
+    |                           ^
+339 |                     return
+    |
+
+masakari-controller/utils/reserve_host_manage.py:380:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+378 |         except:
+379 |             msg = "db update failed"
+380 |             print msg
+    |                   ^
+381 |             raise
+    |
+
+masakari-controller/utils/reserve_host_manage.py:417:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+415 |             if row_cnt == 0:
+416 |                 msg = "none deleted host"
+417 |                 print msg
+    |                       ^
+418 |                 return
+    |
+
+masakari-controller/utils/reserve_host_manage.py:460:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+458 |         except:
+459 |             msg = "db delete failed"
+460 |             print msg
+    |                   ^
+461 |             raise
+    |
+
+masakari-controller/utils/reserve_host_manage.py:493:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+491 |             if row_cnt == 0:
+492 |                 msg = "none selected host"
+493 |                 print msg
+    |                       ^
+494 |                 return
+    |
+
+masakari-controller/utils/reserve_host_manage.py:518:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+516 |         except:
+517 |             msg = "db select failed"
+518 |             print msg
+    |                   ^
+519 |             raise
+    |
+
+masakari-controller/utils/reserve_host_manage.py:552:23: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+550 |             if row_cnt == 0:
+551 |                 msg = "none selected host"
+552 |                 print msg
+    |                       ^
+553 |                 return
+    |
+
+masakari-controller/utils/reserve_host_manage.py:579:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+577 |         except:
+578 |             msg = "db select failed"
+579 |             print msg
+    |                   ^
+580 |             raise
+    |
+
+masakari-controller/utils/reserve_host_manage.py:594:89: E501 Line too long (132 > 88)
+    |
+592 | …
+593 | …
+594 | …rt 1111 --host devstack01 --db-user root --db-password openstack --db-host localhost]
+    |                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E501
+595 | …-port 1111 --before-host devstack01 --after-host devstack02 --db-user root --db-password openstack --db-host localhost]
+596 | …-port 1111 --host devstack01 --db-user root --db-password openstack --db-host localhost]
+    |
+
+masakari-controller/utils/reserve_host_manage.py:595:89: E501 Line too long (166 > 88)
+    |
+593 | …
+594 | …vstack01 --db-user root --db-password openstack --db-host localhost]
+595 | …re-host devstack01 --after-host devstack02 --db-user root --db-password openstack --db-host localhost]
+    |                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E501
+596 | … devstack01 --db-user root --db-password openstack --db-host localhost]
+597 | …password openstack --db-host localhost]
+    |
+
+masakari-controller/utils/reserve_host_manage.py:596:89: E501 Line too long (135 > 88)
+    |
+594 | …t 1111 --host devstack01 --db-user root --db-password openstack --db-host localhost]
+595 | …port 1111 --before-host devstack01 --after-host devstack02 --db-user root --db-password openstack --db-host localhost]
+596 | …port 1111 --host devstack01 --db-user root --db-password openstack --db-host localhost]
+    |                                          ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ E501
+597 | …-user root --db-password openstack --db-host localhost]
+598 | …rt 1111 --db-user root --db-password openstack --db-host localhost]
+    |
+
+masakari-controller/utils/reserve_host_manage.py:597:89: E501 Line too long (103 > 88)
+    |
+595 | #[python reserve_host_manage.py --mode update --port 1111 --before-host devstack01 --after-host devstack02 --db-user root --db-passwo…
+596 | #[python reserve_host_manage.py --mode delete --port 1111 --host devstack01 --db-user root --db-password openstack --db-host localhos…
+597 | #[python reserve_host_manage.py --mode list --db-user root --db-password openstack --db-host localhost]
+    |                                                                                         ^^^^^^^^^^^^^^^ E501
+598 | #[python reserve_host_manage.py --mode list --port 1111 --db-user root --db-password openstack --db-host localhost]
+599 | #
+    |
+
+masakari-controller/utils/reserve_host_manage.py:598:89: E501 Line too long (115 > 88)
+    |
+596 | #[python reserve_host_manage.py --mode delete --port 1111 --host devstack01 --db-user root --db-password openstack --db-host localhos…
+597 | #[python reserve_host_manage.py --mode list --db-user root --db-password openstack --db-host localhost]
+598 | #[python reserve_host_manage.py --mode list --port 1111 --db-user root --db-password openstack --db-host localhost]
+    |                                                                                         ^^^^^^^^^^^^^^^^^^^^^^^^^^^ E501
+599 | #
+600 | ##########################################################################################
+    |
+
+masakari-controller/utils/vmha_data_manage.py:22:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+20 |   """
+21 |
+22 | / import MySQLdb
+23 | | import datetime
+24 | | import argparse
+25 | | import ConfigParser
+   | |___________________^ I001
+26 |
+27 |   ################################################################################
+   |
+   = help: Organize imports
+
+masakari-controller/utils/vmha_data_manage.py:71:13: E722 Do not use bare `except`
+   |
+69 |             try:
+70 |                 period = int(inifile.get('vmha_data_manage', 'period'))
+71 |             except:
+   |             ^^^^^^ E722
+72 |                 pass
+   |
+
+masakari-controller/utils/vmha_data_manage.py:77:9: E722 Do not use bare `except`
+   |
+75 |                                           db)
+76 |
+77 |         except:
+   |         ^^^^^^ E722
+78 |             pass
+   |
+
+masakari-controller/utils/vmha_data_manage.py:92:26: E711 Comparison to `None` should be `cond is None`
+   |
+90 |         #command format and input parameter check
+91 |
+92 |         if (args.mode == None):
+   |                          ^^^^ E711
+93 |             result = "NG"
+   |
+   = help: Replace with `cond is None`
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:18:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+16 |   # limitations under the License.
+17 |
+18 | / import os
+19 | | import syslog
+20 | | import time
+21 | | from pprint import pformat
+22 | | import libvirt_eventfilter as evf
+   | |_________________________________^ I001
+23 |
+24 |   ###################################################
+   |
+   = help: Organize imports
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:139:16: SyntaxError: Multiple exception types must be parenthesized on Python 3.13 (syntax was added in Python 3.14)
+    |
+137 |                    pformat(resp['status']) +
+138 |                    ") : " + pformat(content), True)
+139 |         except socket.timeout, e:
+    |                ^^^^^^^^^^^^^^^^^
+140 |             # Timeout
+141 |             logmsg("Error Response(" + str(i + 1) +
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:139:32: F821 Undefined name `e`
+    |
+137 |                    pformat(resp['status']) +
+138 |                    ") : " + pformat(content), True)
+139 |         except socket.timeout, e:
+    |                                ^ F821
+140 |             # Timeout
+141 |             logmsg("Error Response(" + str(i + 1) +
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:144:16: SyntaxError: Multiple exception types must be parenthesized on Python 3.13 (syntax was added in Python 3.14)
+    |
+142 |                    "): No response. Timeout.", True)
+143 |             pass
+144 |         except socket.error, e:
+    |                ^^^^^^^^^^^^^^^
+145 |             # Connection failure
+146 |             logmsg("Error Response(" + str(i + 1) +
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:144:30: F821 Undefined name `e`
+    |
+142 |                    "): No response. Timeout.", True)
+143 |             pass
+144 |         except socket.error, e:
+    |                              ^ F821
+145 |             # Connection failure
+146 |             logmsg("Error Response(" + str(i + 1) +
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:147:47: F821 Undefined name `e`
+    |
+145 |             # Connection failure
+146 |             logmsg("Error Response(" + str(i + 1) +
+147 |                    "): Socket error. (" + str(e) + ")", True)
+    |                                               ^ F821
+148 |             pass
+149 |         # "sleep" of the specified interval
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:176:1: E402 Module level import not at top of file
+    |
+174 | #
+175 | #################################
+176 | import ConfigParser
+    | ^^^^^^^^^^^^^^^^^^^ E402
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:223:1: E402 Module level import not at top of file
+    |
+221 | #
+222 | #################################
+223 | from httplib2 import Http
+    | ^^^^^^^^^^^^^^^^^^^^^^^^^ E402
+224 | import socket
+225 | try:
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:223:1: I001 [*] Import block is un-sorted or un-formatted
+    |
+221 |   #
+222 |   #################################
+223 | / from httplib2 import Http
+224 | | import socket
+    | |_____________^ I001
+225 |   try:
+226 |       # For c speedups
+    |
+    = help: Organize imports
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:224:1: E402 Module level import not at top of file
+    |
+222 | #################################
+223 | from httplib2 import Http
+224 | import socket
+    | ^^^^^^^^^^^^^ E402
+225 | try:
+226 |     # For c speedups
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:227:5: I001 [*] Import block is un-sorted or un-formatted
+    |
+225 | try:
+226 |     # For c speedups
+227 |     from simplejson import loads, dumps
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ I001
+228 | except ImportError:
+229 |     from json import loads, dumps
+    |
+    = help: Organize imports
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:229:5: I001 [*] Import block is un-sorted or un-formatted
+    |
+227 |     from simplejson import loads, dumps
+228 | except ImportError:
+229 |     from json import loads, dumps
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ I001
+    |
+    = help: Organize imports
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:229:22: F401 [*] `json.loads` imported but unused
+    |
+227 |     from simplejson import loads, dumps
+228 | except ImportError:
+229 |     from json import loads, dumps
+    |                      ^^^^^ F401
+    |
+    = help: Remove unused import: `json.loads`
+
+masakari-instancemonitor/instancemonitor/libvirt_callback.py:256:1: E402 Module level import not at top of file
+    |
+254 | #
+255 | #################################
+256 | import logging
+    | ^^^^^^^^^^^^^^ E402
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter.py:21:1: I001 [*] Import block is un-sorted or un-formatted
+   |
+19 |   # Declaration of import
+20 |   ###################################################
+21 | / import threading
+22 | | import os
+23 | | import sys
+24 | | import syslog
+25 | | import socket
+26 | | import uuid
+27 | | import datetime
+28 | | import time
+29 | | from libvirt_callback import *
+30 | | from libvirt import *
+31 | | from libvirt_eventfilter_table import *
+   | |_______________________________________^ I001
+32 |
+33 |   ###################################################
+   |
+   = help: Organize imports
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter.py:29:1: F403 `from libvirt_callback import *` used; unable to detect undefined names
+   |
+27 | import datetime
+28 | import time
+29 | from libvirt_callback import *
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F403
+30 | from libvirt import *
+31 | from libvirt_eventfilter_table import *
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter.py:30:1: F403 `from libvirt import *` used; unable to detect undefined names
+   |
+28 | import time
+29 | from libvirt_callback import *
+30 | from libvirt import *
+   | ^^^^^^^^^^^^^^^^^^^^^ F403
+31 | from libvirt_eventfilter_table import *
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter.py:31:1: F403 `from libvirt_eventfilter_table import *` used; unable to detect undefined names
+   |
+29 | from libvirt_callback import *
+30 | from libvirt import *
+31 | from libvirt_eventfilter_table import *
+   | ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F403
+32 |
+33 | ###################################################
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter.py:116:1: E402 Module level import not at top of file
+    |
+114 | #
+115 | #################################
+116 | import logging
+    | ^^^^^^^^^^^^^^ E402
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter.py:122:5: F841 Local variable `arg0` is assigned to but never used
+    |
+121 |     # Output to the syslog.
+122 |     arg0 = os.path.basename(sys.argv[0])
+    |     ^^^^ F841
+123 |     host = socket.gethostname()
+    |
+    = help: Remove assignment to unused variable `arg0`
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter.py:201:22: F405 `event_filter_dic` may be undefined, or defined from star imports
+    |
+200 |     try:
+201 |         if detail in event_filter_dic[eventID][eventType]:
+    |                      ^^^^^^^^^^^^^^^^ F405
+202 |             debug_log("Event Filter Matched.")
+203 |             # callback Thread Start
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter.py:205:24: F405 `libvirtEventCallback` may be undefined, or defined from star imports
+    |
+203 |             # callback Thread Start
+204 |             thread = threading.Thread(
+205 |                 target=libvirtEventCallback,
+    |                        ^^^^^^^^^^^^^^^^^^^^ F405
+206 |                 args=(eventID, eventType, detail,
+207 |                       uuID, noticeID, noticeType,
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:21:1: F403 `from libvirt import *` used; unable to detect undefined names
+   |
+19 | #  Import the event definition of libvirt
+20 | ###################################################
+21 | from libvirt import *
+   | ^^^^^^^^^^^^^^^^^^^^^ F403
+22 |
+23 | ###################################################
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:33:5: F405 `VIR_DOMAIN_EVENT_ID_LIFECYCLE` may be undefined, or defined from star imports
+   |
+31 | ########################################################################
+32 | event_filter_dic = {
+33 |     VIR_DOMAIN_EVENT_ID_LIFECYCLE:
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+34 |     {
+35 |         #        VIR_DOMAIN_EVENT_DEFINED:
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:51:9: F405 `VIR_DOMAIN_EVENT_SUSPENDED` may be undefined, or defined from star imports
+   |
+49 |         #            VIR_DOMAIN_EVENT_STARTED_FROM_SNAPSHOT
+50 |         #        ),
+51 |         VIR_DOMAIN_EVENT_SUSPENDED:
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+52 |         (
+53 |             #            VIR_DOMAIN_EVENT_SUSPENDED_PAUSED,
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:55:13: F405 `VIR_DOMAIN_EVENT_SUSPENDED_IOERROR` may be undefined, or defined from star imports
+   |
+53 |             #            VIR_DOMAIN_EVENT_SUSPENDED_PAUSED,
+54 |             #            VIR_DOMAIN_EVENT_SUSPENDED_MIGRATED,
+55 |             VIR_DOMAIN_EVENT_SUSPENDED_IOERROR,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+56 |             VIR_DOMAIN_EVENT_SUSPENDED_WATCHDOG,
+57 |             #            VIR_DOMAIN_EVENT_SUSPENDED_RESTORED,
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:56:13: F405 `VIR_DOMAIN_EVENT_SUSPENDED_WATCHDOG` may be undefined, or defined from star imports
+   |
+54 |             #            VIR_DOMAIN_EVENT_SUSPENDED_MIGRATED,
+55 |             VIR_DOMAIN_EVENT_SUSPENDED_IOERROR,
+56 |             VIR_DOMAIN_EVENT_SUSPENDED_WATCHDOG,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+57 |             #            VIR_DOMAIN_EVENT_SUSPENDED_RESTORED,
+58 |             #            VIR_DOMAIN_EVENT_SUSPENDED_FROM_SNAPSHOT
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:59:13: F405 `VIR_DOMAIN_EVENT_SUSPENDED_API_ERROR` may be undefined, or defined from star imports
+   |
+57 |             #            VIR_DOMAIN_EVENT_SUSPENDED_RESTORED,
+58 |             #            VIR_DOMAIN_EVENT_SUSPENDED_FROM_SNAPSHOT
+59 |             VIR_DOMAIN_EVENT_SUSPENDED_API_ERROR
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+60 |         ),
+61 |         #        VIR_DOMAIN_EVENT_RESUMED:
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:67:9: F405 `VIR_DOMAIN_EVENT_STOPPED` may be undefined, or defined from star imports
+   |
+65 |         #            VIR_DOMAIN_EVENT_RESUMED_FROM_SNAPSHOT
+66 |         #        ),
+67 |         VIR_DOMAIN_EVENT_STOPPED:
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^ F405
+68 |         (
+69 |             VIR_DOMAIN_EVENT_STOPPED_SHUTDOWN,
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:69:13: F405 `VIR_DOMAIN_EVENT_STOPPED_SHUTDOWN` may be undefined, or defined from star imports
+   |
+67 |         VIR_DOMAIN_EVENT_STOPPED:
+68 |         (
+69 |             VIR_DOMAIN_EVENT_STOPPED_SHUTDOWN,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+70 |             VIR_DOMAIN_EVENT_STOPPED_DESTROYED,
+71 |             #            VIR_DOMAIN_EVENT_STOPPED_CRASHED,
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:70:13: F405 `VIR_DOMAIN_EVENT_STOPPED_DESTROYED` may be undefined, or defined from star imports
+   |
+68 |         (
+69 |             VIR_DOMAIN_EVENT_STOPPED_SHUTDOWN,
+70 |             VIR_DOMAIN_EVENT_STOPPED_DESTROYED,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+71 |             #            VIR_DOMAIN_EVENT_STOPPED_CRASHED,
+72 |             #            VIR_DOMAIN_EVENT_STOPPED_MIGRATED,
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:74:13: F405 `VIR_DOMAIN_EVENT_STOPPED_FAILED` may be undefined, or defined from star imports
+   |
+72 |             #            VIR_DOMAIN_EVENT_STOPPED_MIGRATED,
+73 |             #            VIR_DOMAIN_EVENT_STOPPED_SAVED,
+74 |             VIR_DOMAIN_EVENT_STOPPED_FAILED,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+75 |             #            VIR_DOMAIN_EVENT_STOPPED_FROM_SNAPSHOT
+76 |         ),
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:77:9: F405 `VIR_DOMAIN_EVENT_SHUTDOWN` may be undefined, or defined from star imports
+   |
+75 |             #            VIR_DOMAIN_EVENT_STOPPED_FROM_SNAPSHOT
+76 |         ),
+77 |         VIR_DOMAIN_EVENT_SHUTDOWN:
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+78 |         (
+79 |             VIR_DOMAIN_EVENT_SHUTDOWN_FINISHED,
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:79:13: F405 `VIR_DOMAIN_EVENT_SHUTDOWN_FINISHED` may be undefined, or defined from star imports
+   |
+77 |         VIR_DOMAIN_EVENT_SHUTDOWN:
+78 |         (
+79 |             VIR_DOMAIN_EVENT_SHUTDOWN_FINISHED,
+   |             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+80 |         )
+81 |     },
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:82:5: F405 `VIR_DOMAIN_EVENT_ID_REBOOT` may be undefined, or defined from star imports
+   |
+80 |         )
+81 |     },
+82 |     VIR_DOMAIN_EVENT_ID_REBOOT: {DUMMY: (DUMMY,)},
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+83 |     #    VIR_DOMAIN_EVENT_ID_RTC_CHANGE: { DUMMY: ( DUMMY,) }
+84 |     VIR_DOMAIN_EVENT_ID_WATCHDOG:
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:84:5: F405 `VIR_DOMAIN_EVENT_ID_WATCHDOG` may be undefined, or defined from star imports
+   |
+82 |     VIR_DOMAIN_EVENT_ID_REBOOT: {DUMMY: (DUMMY,)},
+83 |     #    VIR_DOMAIN_EVENT_ID_RTC_CHANGE: { DUMMY: ( DUMMY,) }
+84 |     VIR_DOMAIN_EVENT_ID_WATCHDOG:
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+85 |     {
+86 |         VIR_DOMAIN_EVENT_WATCHDOG_NONE:     (DUMMY,),
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:86:9: F405 `VIR_DOMAIN_EVENT_WATCHDOG_NONE` may be undefined, or defined from star imports
+   |
+84 |     VIR_DOMAIN_EVENT_ID_WATCHDOG:
+85 |     {
+86 |         VIR_DOMAIN_EVENT_WATCHDOG_NONE:     (DUMMY,),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+87 |         VIR_DOMAIN_EVENT_WATCHDOG_PAUSE:    (DUMMY,),
+88 |         VIR_DOMAIN_EVENT_WATCHDOG_RESET:    (DUMMY,),
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:87:9: F405 `VIR_DOMAIN_EVENT_WATCHDOG_PAUSE` may be undefined, or defined from star imports
+   |
+85 |     {
+86 |         VIR_DOMAIN_EVENT_WATCHDOG_NONE:     (DUMMY,),
+87 |         VIR_DOMAIN_EVENT_WATCHDOG_PAUSE:    (DUMMY,),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+88 |         VIR_DOMAIN_EVENT_WATCHDOG_RESET:    (DUMMY,),
+89 |         VIR_DOMAIN_EVENT_WATCHDOG_POWEROFF: (DUMMY,),
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:88:9: F405 `VIR_DOMAIN_EVENT_WATCHDOG_RESET` may be undefined, or defined from star imports
+   |
+86 |         VIR_DOMAIN_EVENT_WATCHDOG_NONE:     (DUMMY,),
+87 |         VIR_DOMAIN_EVENT_WATCHDOG_PAUSE:    (DUMMY,),
+88 |         VIR_DOMAIN_EVENT_WATCHDOG_RESET:    (DUMMY,),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+89 |         VIR_DOMAIN_EVENT_WATCHDOG_POWEROFF: (DUMMY,),
+90 |         VIR_DOMAIN_EVENT_WATCHDOG_SHUTDOWN: (DUMMY,),
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:89:9: F405 `VIR_DOMAIN_EVENT_WATCHDOG_POWEROFF` may be undefined, or defined from star imports
+   |
+87 |         VIR_DOMAIN_EVENT_WATCHDOG_PAUSE:    (DUMMY,),
+88 |         VIR_DOMAIN_EVENT_WATCHDOG_RESET:    (DUMMY,),
+89 |         VIR_DOMAIN_EVENT_WATCHDOG_POWEROFF: (DUMMY,),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+90 |         VIR_DOMAIN_EVENT_WATCHDOG_SHUTDOWN: (DUMMY,),
+91 |         VIR_DOMAIN_EVENT_WATCHDOG_DEBUG: (DUMMY,)
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:90:9: F405 `VIR_DOMAIN_EVENT_WATCHDOG_SHUTDOWN` may be undefined, or defined from star imports
+   |
+88 |         VIR_DOMAIN_EVENT_WATCHDOG_RESET:    (DUMMY,),
+89 |         VIR_DOMAIN_EVENT_WATCHDOG_POWEROFF: (DUMMY,),
+90 |         VIR_DOMAIN_EVENT_WATCHDOG_SHUTDOWN: (DUMMY,),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+91 |         VIR_DOMAIN_EVENT_WATCHDOG_DEBUG: (DUMMY,)
+92 |     },
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:91:9: F405 `VIR_DOMAIN_EVENT_WATCHDOG_DEBUG` may be undefined, or defined from star imports
+   |
+89 |         VIR_DOMAIN_EVENT_WATCHDOG_POWEROFF: (DUMMY,),
+90 |         VIR_DOMAIN_EVENT_WATCHDOG_SHUTDOWN: (DUMMY,),
+91 |         VIR_DOMAIN_EVENT_WATCHDOG_DEBUG: (DUMMY,)
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+92 |     },
+93 |     VIR_DOMAIN_EVENT_ID_IO_ERROR:
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:93:5: F405 `VIR_DOMAIN_EVENT_ID_IO_ERROR` may be undefined, or defined from star imports
+   |
+91 |         VIR_DOMAIN_EVENT_WATCHDOG_DEBUG: (DUMMY,)
+92 |     },
+93 |     VIR_DOMAIN_EVENT_ID_IO_ERROR:
+   |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+94 |     {
+95 |         VIR_DOMAIN_EVENT_IO_ERROR_NONE:   (DUMMY,),
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:95:9: F405 `VIR_DOMAIN_EVENT_IO_ERROR_NONE` may be undefined, or defined from star imports
+   |
+93 |     VIR_DOMAIN_EVENT_ID_IO_ERROR:
+94 |     {
+95 |         VIR_DOMAIN_EVENT_IO_ERROR_NONE:   (DUMMY,),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+96 |         VIR_DOMAIN_EVENT_IO_ERROR_PAUSE:  (DUMMY,),
+97 |         VIR_DOMAIN_EVENT_IO_ERROR_REPORT: (DUMMY,)
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:96:9: F405 `VIR_DOMAIN_EVENT_IO_ERROR_PAUSE` may be undefined, or defined from star imports
+   |
+94 |     {
+95 |         VIR_DOMAIN_EVENT_IO_ERROR_NONE:   (DUMMY,),
+96 |         VIR_DOMAIN_EVENT_IO_ERROR_PAUSE:  (DUMMY,),
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+97 |         VIR_DOMAIN_EVENT_IO_ERROR_REPORT: (DUMMY,)
+98 |     },
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:97:9: F405 `VIR_DOMAIN_EVENT_IO_ERROR_REPORT` may be undefined, or defined from star imports
+   |
+95 |         VIR_DOMAIN_EVENT_IO_ERROR_NONE:   (DUMMY,),
+96 |         VIR_DOMAIN_EVENT_IO_ERROR_PAUSE:  (DUMMY,),
+97 |         VIR_DOMAIN_EVENT_IO_ERROR_REPORT: (DUMMY,)
+   |         ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+98 |     },
+99 |     #    VIR_DOMAIN_EVENT_ID_GRAPHICS:
+   |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:108:5: F405 `VIR_DOMAIN_EVENT_ID_IO_ERROR_REASON` may be undefined, or defined from star imports
+    |
+106 |     #        )
+107 |     #    },
+108 |     VIR_DOMAIN_EVENT_ID_IO_ERROR_REASON: {DUMMY: (DUMMY,)},
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+109 |     VIR_DOMAIN_EVENT_ID_CONTROL_ERROR: {DUMMY: (DUMMY,)}
+    |
+
+masakari-instancemonitor/instancemonitor/libvirt_eventfilter_table.py:109:5: F405 `VIR_DOMAIN_EVENT_ID_CONTROL_ERROR` may be undefined, or defined from star imports
+    |
+107 |     #    },
+108 |     VIR_DOMAIN_EVENT_ID_IO_ERROR_REASON: {DUMMY: (DUMMY,)},
+109 |     VIR_DOMAIN_EVENT_ID_CONTROL_ERROR: {DUMMY: (DUMMY,)}
+    |     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^ F405
+110 |
+111 | }
+    |
+
+masakari-instancemonitor/instancemonitor/masakari_instancemonitor.py:88:89: E501 Line too long (104 > 88)
+   |
+88 | def myDomainEventGraphicsCallback(conn, dom, phase, localAddr, remoteAddr, authScheme, subject, opaque):
+   |                                                                                         ^^^^^^^^^^^^^^^^ E501
+89 |     evf.virEventFilter(VIR_DOMAIN_EVENT_ID_GRAPHICS, -
+90 |                        1, phase, dom.UUIDString())
+   |
+
+masakari-instancemonitor/instancemonitor/masakari_instancemonitor.py:93:89: E501 Line too long (97 > 88)
+   |
+93 | def myDomainEventDiskChangeCallback(conn, dom, oldSrcPath, newSrcPath, devAlias, reason, opaque):
+   |                                                                                         ^^^^^^^^^ E501
+94 |     evf.virEventFilter(VIR_DOMAIN_EVENT_ID_DISK_CHANGE, -
+95 |                        1, -1, dom.UUIDString())
+   |
+
+masakari-instancemonitor/instancemonitor/masakari_instancemonitor.py:98:89: E501 Line too long (93 > 88)
+    |
+ 98 | def myDomainEventIOErrorReasonCallback(conn, dom, srcPath, devAlias, action, reason, opaque):
+    |                                                                                         ^^^^^ E501
+ 99 |     evf.virEventFilter(
+100 |         VIR_DOMAIN_EVENT_ID_IO_ERROR_REASON, -1, -1, dom.UUIDString())
+    |
+
+masakari-instancemonitor/instancemonitor/masakari_instancemonitor.py:161:89: E501 Line too long (98 > 88)
+    |
+159 | #   Start event loop look as thread from main thread. And make it daemon thread.
+160 | #   Open the connection, and set event callback.
+161 | #   Perform periodic monitoring of connection, and when abnormal condition is detected, reconnect.
+    |                                                                                         ^^^^^^^^^^ E501
+162 | #
+163 | # Argument:
+    |
+
+masakari-instancemonitor/instancemonitor/masakari_instancemonitor.py:201:89: E501 Line too long (90 > 88)
+    |
+199 |                                         myDomainEventDiskChangeCallback, None)
+200 |         callback_ids.append(cid)
+201 |         cid = vc.domainEventRegisterAny(None, libvirt.VIR_DOMAIN_EVENT_ID_IO_ERROR_REASON,
+    |                                                                                         ^^ E501
+202 |                                         myDomainEventIOErrorReasonCallback, None)
+203 |         callback_ids.append(cid)
+    |
+
+masakari-instancemonitor/instancemonitor/masakari_instancemonitor.py:245:12: SyntaxError: Multiple exception types must be parenthesized on Python 3.13 (syntax was added in Python 3.14)
+    |
+243 |     try:
+244 |         opts, args = getopt.getopt(sys.argv[1:], "hd", ["help", "debug"])
+245 |     except getopt.GetoptError, err:
+    |            ^^^^^^^^^^^^^^^^^^^^^^^
+246 |         usage()
+247 |         sys.exit(2)
+    |
+
+masakari-instancemonitor/instancemonitor/masakari_instancemonitor.py:264:19: SyntaxError: Simple statements must be separated by newlines or semicolons
+    |
+262 |             del vc
+263 |         except:
+264 |             print "invalid uri -", uri
+    |                   ^
+265 |             sys.exit(1)
+266 |     else:
+    |
+
+masakari-instancemonitor/setup.py:2:1: I001 [*] Import block is un-sorted or un-formatted
+  |
+1 |   #!/usr/bin/env python
+2 | / import os
+3 | | from setuptools import setup
+  | |____________________________^ I001
+4 |
+5 |   # Since masakari-controller does not own its own repo
+  |
+  = help: Organize imports
+
+Found 212 errors.
+[*] 54 fixable with the `--fix` option (23 hidden fixes can be enabled with the `--unsafe-fixes` option).
