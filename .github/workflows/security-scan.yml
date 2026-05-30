@@ -2,8 +2,7 @@ name: Python Security scan
 'on':
   push:
     branches:
-      - main
-      - private/harsh/soc2-scan
+      - master
   pull_request:
 
 jobs:
@@ -81,6 +80,17 @@ jobs:
           base: ${{ github.ref_name }}
           delete-branch: true
 
+      - name: Close Stale Vulnerability PR (if clean)
+        if: ${{ github.event_name == 'push' && steps.scan.outputs.bandit_high_found == 'false' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="auto/bandit-scan/${{ env.SAFE_REF_NAME }}"
+          PR_NUMBER=$(gh pr list --repo "${{ github.repository }}" --head "$BRANCH" --state open --json number --jq '.[0].number')
+          if [[ -n "$PR_NUMBER" ]]; then
+            gh pr close "$PR_NUMBER" --repo "${{ github.repository }}" --comment "No HIGH/CRITICAL vulnerabilities found in latest scan on \`${{ github.ref_name }}\`. Closing report."
+          fi
+
       - name: Fail Job If Vulnerabilities Found
         if: ${{ steps.scan.outputs.bandit_high_found == 'true' }}
         run: exit 1
@@ -105,7 +115,7 @@ jobs:
           wget -qO- https://aquasecurity.github.io/trivy-repo/deb/public.key | sudo tee /etc/apt/trusted.gpg.d/trivy.asc
           echo "deb https://aquasecurity.github.io/trivy-repo/deb $(lsb_release -sc) main" | sudo tee /etc/apt/sources.list.d/trivy.list
           sudo apt update
-          sudo apt install -y trivy=0.69.3 jq
+          sudo apt install -y trivy=0.70.0 jq
 
       - name: Sanitize branch name
         run: echo "SAFE_REF_NAME=${GITHUB_REF_NAME//\//-}" >> $GITHUB_ENV
@@ -166,6 +176,17 @@ jobs:
           branch: auto/trivy-scan/${{ env.SAFE_REF_NAME }}
           base: ${{ github.ref_name }}
           delete-branch: true
+
+      - name: Close Stale Vulnerability PR (if clean)
+        if: ${{ github.event_name == 'push' && steps.scan.outputs.trivy_issues_found == 'false' }}
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          BRANCH="auto/trivy-scan/${{ env.SAFE_REF_NAME }}"
+          PR_NUMBER=$(gh pr list --repo "${{ github.repository }}" --head "$BRANCH" --state open --json number --jq '.[0].number')
+          if [[ -n "$PR_NUMBER" ]]; then
+            gh pr close "$PR_NUMBER" --repo "${{ github.repository }}" --comment "No HIGH/CRITICAL vulnerabilities found in latest scan on \`${{ github.ref_name }}\`. Closing report."
+          fi
 
       - name: Fail Job If Vulnerabilities Found
         if: ${{ steps.scan.outputs.trivy_issues_found == 'true' }}
